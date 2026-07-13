@@ -230,11 +230,11 @@ export const UNIDADES: Unidad[] = [
 // ───────────────────────────────────────────────────────────────
 
 export const ESPACIO_IMAGENES = [
-  { id: "sala-fuerza", titulo: "Sala de fuerza", pendiente: true },
-  { id: "consulta-clinica", titulo: "Consulta clínica", pendiente: true },
-  { id: "zona-evaluacion", titulo: "Zona de evaluación", pendiente: true },
-  { id: "entrenamiento-personal", titulo: "Entrenamiento personal", pendiente: true },
-  { id: "recepcion", titulo: "Recepción", pendiente: true },
+  { id: "sala-fuerza", titulo: "Sala de fuerza", img: "images/fuerza.webp" },
+  { id: "recuperacion", titulo: "Recuperación y fisioterapia", img: "images/recuperacion.webp" },
+  { id: "zona-evaluacion", titulo: "Zona de evaluación y rendimiento", img: "images/evaluacion.webp" },
+  { id: "entrenamiento-personal", titulo: "Entrenamiento personal", img: "images/entrenamiento.webp" },
+  { id: "instalaciones", titulo: "Instalaciones", img: "images/instalaciones.webp" },
 ] as const;
 
 // ───────────────────────────────────────────────────────────────

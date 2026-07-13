@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { HERO } from "@/constants";
@@ -8,20 +8,13 @@ const ShaderAnimation = lazy(() => import("@/components/canvas/ShaderAnimation")
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     if (!contentRef.current) return;
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" }, delay: 0.3 });
-    const video = videoRef.current;
     const el = contentRef.current;
-
-    if (video && videoLoaded) {
-      tl.fromTo(video, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.2 }, 0);
-    }
 
     tl.fromTo(
       el.querySelector(".hero-eyebrow"),
@@ -65,7 +58,7 @@ export default function Hero() {
     return () => {
       tl.kill();
     };
-  }, [videoLoaded]);
+  }, []);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -77,33 +70,25 @@ export default function Hero() {
       ref={sectionRef}
       className="relative w-full h-screen min-h-[600px] bg-grafito overflow-hidden"
     >
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover opacity-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        onLoadedData={() => setVideoLoaded(true)}
-        poster=""
-      >
-        <source src="" type="video/mp4" />
-      </video>
-
-      {/* Fallback gradient overlay (visible mientras carga el shader) */}
+      {/* Fondo degradado (base mientras carga la imagen) */}
       <div className="absolute inset-0 bg-gradient-to-br from-grafito via-grafito-800 to-grafito" />
 
-      {/* Shader animado de fondo */}
+      {/* Imagen de fondo */}
+      <img
+        src={`${import.meta.env.BASE_URL}images/entrenamiento.webp`}
+        alt="Entrenamiento en MUV Vital"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Shader animado (blend screen: solo brillan las líneas sobre la foto) */}
       <Suspense fallback={null}>
-        <div className="absolute inset-0 z-[1]">
+        <div className="absolute inset-0 z-[1] mix-blend-screen opacity-70">
           <ShaderAnimation />
         </div>
       </Suspense>
 
-      {/* Dark overlay (legibilidad del texto sobre el shader) */}
-      <div className="absolute inset-0 bg-grafito/55 z-[2]" />
+      {/* Overlay oscuro (legibilidad del texto) */}
+      <div className="absolute inset-0 bg-grafito/60 z-[2]" />
 
       {/* Content */}
       <div
