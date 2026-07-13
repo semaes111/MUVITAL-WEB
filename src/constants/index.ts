@@ -9,10 +9,10 @@ export const MARCA = {
   ciudad: "Roquetas de Mar",
   provincia: "Almería",
   dominio: "https://muvvital.com",
-  telefono: "«PENDIENTE:teléfono»",
-  whatsapp: "«PENDIENTE:whatsapp»",
+  telefono: "680 63 10 98",
+  whatsapp: "680 63 10 98",
   email: "«PENDIENTE:email-contacto»",
-  direccion: "«PENDIENTE:dirección-del-club»",
+  direccion: "Avenida Reino de España, 78, 04740",
   horario: "«PENDIENTE:horario»",
 } as const;
 
@@ -380,7 +380,7 @@ export const FORMULARIO = {
   boton: "Enviar solicitud",
   enviando: "Enviando…",
   exito: "Recibido. Te llamamos en menos de 24 h laborables para proponerte fecha y hora.",
-  error: "No se ha podido enviar. Llámanos o escríbenos por WhatsApp: «PENDIENTE:teléfono».",
+  error: "No se ha podido enviar. Llámanos o escríbenos por WhatsApp: 680 63 10 98.",
 } as const;
 
 // ───────────────────────────────────────────────────────────────
@@ -405,13 +405,8 @@ export const FOOTER = {
 export const SHOW_TESTIMONIOS = false;
 
 export const DATOS_PENDIENTES: string[] = [
-  "dirección-del-club",
-  "teléfono",
-  "whatsapp",
   "email-contacto",
   "horario",
-  "razón-social",
-  "nif",
   "nº-registro-sanitario-centro",
   "endpoint-o-email-destino",
   "foto-hero",

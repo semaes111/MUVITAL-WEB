@@ -10,10 +10,10 @@ export default function AvisoLegal() {
           <section className="mb-10">
             <h2 className="font-display text-xl text-grafito mb-4">1. Datos identificativos</h2>
             <p className="font-body text-sm text-grafito/70 leading-relaxed mb-3">
-              Titular: «PENDIENTE:razón-social»
+              Titular: MUVSALUD, S.L.
             </p>
             <p className="font-body text-sm text-grafito/70 leading-relaxed mb-3">
-              NIF: «PENDIENTE:nif»
+              NIF: B26811471
             </p>
             <p className="font-body text-sm text-grafito/70 leading-relaxed mb-3">
               Dirección: {MARCA.direccion}, {MARCA.ciudad}, {MARCA.provincia}
