@@ -3,16 +3,14 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { HERO } from "@/constants";
 import Button from "@/components/ui/Button";
-import { useMobile } from "@/hooks/useMobile";
 
-const HeroParticles = lazy(() => import("@/components/canvas/HeroParticles"));
+const ShaderAnimation = lazy(() => import("@/components/canvas/ShaderAnimation"));
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const isMobile = useMobile(640);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -94,31 +92,18 @@ export default function Hero() {
         <source src="" type="video/mp4" />
       </video>
 
-      {/* Fallback gradient overlay */}
+      {/* Fallback gradient overlay (visible mientras carga el shader) */}
       <div className="absolute inset-0 bg-gradient-to-br from-grafito via-grafito-800 to-grafito" />
 
-      {/* Particles */}
-      {!isMobile && (
-        <Suspense fallback={null}>
-          <div className="absolute inset-0 z-[1]">
-            <HeroParticles />
-          </div>
-        </Suspense>
-      )}
+      {/* Shader animado de fondo */}
+      <Suspense fallback={null}>
+        <div className="absolute inset-0 z-[1]">
+          <ShaderAnimation />
+        </div>
+      </Suspense>
 
-      {/* Mobile fallback */}
-      {isMobile && (
-        <div
-          className="absolute inset-0 z-[1]"
-          style={{
-            background:
-              "radial-gradient(60% 50% at 70% 30%, rgba(159,199,212,0.10), transparent)",
-          }}
-        />
-      )}
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-grafito/45 z-[2]" />
+      {/* Dark overlay (legibilidad del texto sobre el shader) */}
+      <div className="absolute inset-0 bg-grafito/55 z-[2]" />
 
       {/* Content */}
       <div
