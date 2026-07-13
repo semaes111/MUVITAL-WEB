@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# MUV Vital — Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web de **MUV Vital**, club privado de salud y rendimiento en Roquetas de Mar.
 
-Currently, two official plugins are available:
+Hecho con **React 19 + TypeScript + Vite + Tailwind CSS**. Se compila a
+HTML/CSS/JS estáticos, listos para subir a cualquier alojamiento (Hostinger,
+etc.).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Publicar en Hostinger
 
-## React Compiler
+La web ya está compilada en la carpeta **`dist/`**. Solo tienes que subir su
+contenido a `public_html` en Hostinger.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 **Guía paso a paso:** [`DESPLIEGUE-HOSTINGER.md`](./DESPLIEGUE-HOSTINGER.md)
 
-## Expanding the ESLint configuration
+> Usa **HashRouter** (rutas con `#`), por lo que funciona en hosting estático
+> sin configuración especial del servidor.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Desarrollo local
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install     # instalar dependencias
+npm run dev     # servidor de desarrollo → http://localhost:3000
+npm run build   # compilar a dist/
+npm run preview # previsualizar el build → http://localhost:4173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Estructura
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+index.html            Punto de entrada
+src/
+  main.tsx            Arranque de React (HashRouter)
+  App.tsx             Rutas y layout
+  sections/           Secciones de la home (Hero, Método, Pilares…)
+  pages/              Páginas legales (aviso legal, privacidad, cookies)
+  components/         UI, layout y canvas (three.js)
+  constants/          Todo el contenido/textos del sitio
+public/
+  .htaccess           Config Apache para Hostinger (GZIP, caché, HTTPS)
+  favicon.svg
+dist/                 Web compilada lista para subir (generada por build)
+```
+
+## ✍️ Antes de publicar
+
+Rellena los marcadores `«PENDIENTE:...»` en `src/constants/index.ts`
+(teléfono, email, dirección, horario…) y los datos legales en
+`src/pages/`. Luego ejecuta `npm run build` y vuelve a subir `dist/`.
+El formulario de contacto es todavía una maqueta; consulta la guía de
+despliegue para conectarlo a un servicio de envío real.

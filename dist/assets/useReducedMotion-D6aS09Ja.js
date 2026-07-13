@@ -1,0 +1,1 @@
+import{a as r}from"./motion-_KkrOfeD.js";function s(){const[n,c]=r.useState(!1);return r.useEffect(()=>{const e=window.matchMedia("(prefers-reduced-motion: reduce)"),t=()=>c(e.matches);return t(),e.addEventListener("change",t),()=>e.removeEventListener("change",t)},[]),n}export{s as u};
