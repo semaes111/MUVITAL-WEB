@@ -15,6 +15,7 @@ import Acceso from "@/sections/Acceso";
 import AvisoLegal from "@/pages/AvisoLegal";
 import Privacidad from "@/pages/Privacidad";
 import Cookies from "@/pages/Cookies";
+import Experiencia from "@/pages/Experiencia";
 
 function HomePage() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/legal/aviso-legal" element={<AvisoLegal />} />
             <Route path="/legal/privacidad" element={<Privacidad />} />
             <Route path="/legal/cookies" element={<Cookies />} />
+            <Route path="/experiencia" element={<Experiencia />} />
           </Routes>
           <Footer />
         </>
