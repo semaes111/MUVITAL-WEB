@@ -1,12 +1,34 @@
-import { useRef, lazy, Suspense } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { PILARES } from "@/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useMobile } from "@/hooks/useMobile";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const ShaderAnimation = lazy(() => import("@/components/canvas/ShaderAnimation"));
 
 export default function Pilares() {
+  const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const [shaderVisible, setShaderVisible] = useState(false);
+  const isMobile = useMobile(768);
+  const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || isMobile || reducedMotion) {
+      setShaderVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setShaderVisible(entry.isIntersecting),
+      { rootMargin: "400px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isMobile, reducedMotion]);
 
   const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -25,13 +47,15 @@ export default function Pilares() {
   };
 
   return (
-    <section id="pilares" className="bg-grafito py-32 lg:py-40 relative overflow-hidden">
+    <section ref={sectionRef} id="pilares" className="bg-grafito py-32 lg:py-40 relative overflow-hidden">
       {/* Shader animado de fondo (blend screen, sutil) */}
-      <Suspense fallback={null}>
-        <div className="absolute inset-0 z-0 mix-blend-screen opacity-40 pointer-events-none">
-          <ShaderAnimation />
-        </div>
-      </Suspense>
+      {shaderVisible && (
+        <Suspense fallback={null}>
+          <div className="absolute inset-0 z-0 mix-blend-screen opacity-40 pointer-events-none">
+            <ShaderAnimation />
+          </div>
+        </Suspense>
+      )}
 
       <div className="contenedor-muv relative z-10">
         <SectionHeader eyebrow="LOS PILARES" titulo="Cuatro formas de cuidarte." oscuro />

@@ -4,9 +4,12 @@ import { defineConfig } from "vite"
 import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   base: './',
-  plugins: [inspectAttr(), react()],
+  plugins: [
+    ...(command === "serve" ? [inspectAttr()] : []),
+    react(),
+  ],
   server: {
     port: 3000,
   },
@@ -15,16 +18,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          three: ["three", "@react-three/fiber", "@react-three/drei"],
-          gsap: ["gsap", "@gsap/react"],
-          motion: ["framer-motion"],
-          vendor: ["react", "react-dom"],
-        },
-      },
-    },
-  },
-});
+}));

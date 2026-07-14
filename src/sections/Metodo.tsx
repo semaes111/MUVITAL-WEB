@@ -1,4 +1,4 @@
-import { useEffect, useRef, lazy, Suspense } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,23 @@ export default function Metodo() {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile(640);
+  const [ringVisible, setRingVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || isMobile) {
+      setRingVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setRingVisible(entry.isIntersecting),
+      { rootMargin: "400px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) return;
@@ -70,11 +87,13 @@ export default function Metodo() {
 
         {/* Anillo 3D */}
         {!isMobile && (
-          <Suspense fallback={null}>
-            <div className="w-full h-[300px] lg:h-[400px] mb-12">
-              <AnilloMetodo />
-            </div>
-          </Suspense>
+          <div className="w-full h-[300px] lg:h-[400px] mb-12">
+            {ringVisible && (
+              <Suspense fallback={null}>
+                <AnilloMetodo />
+              </Suspense>
+            )}
+          </div>
         )}
 
         {/* Mobile fallback: SVG */}

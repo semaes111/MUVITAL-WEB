@@ -16,10 +16,19 @@ function ParticlesField() {
     const n = 900;
     const geo = new THREE.BufferGeometry();
     const pos = new Float32Array(n * 3);
+    let seed = 0x6d2b79f5;
+    const random = () => {
+      seed += 0x6d2b79f5;
+      let value = seed;
+      value = Math.imul(value ^ (value >>> 15), value | 1);
+      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
+
     for (let i = 0; i < n; i++) {
-      const r = 1.4 * Math.cbrt(Math.random());
-      const theta = Math.random() * 2 * Math.PI;
-      const phi = Math.acos(2 * Math.random() - 1);
+      const r = 1.4 * Math.cbrt(random());
+      const theta = random() * 2 * Math.PI;
+      const phi = Math.acos(2 * random() - 1);
       pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
       pos[i * 3 + 2] = r * Math.cos(phi);

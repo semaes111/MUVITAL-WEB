@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ACCESO, PASOS_ACCESO, FORMULARIO } from "@/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -10,7 +10,11 @@ export default function Acceso() {
   const [errores, setErrores] = useState<Record<string, string>>({});
   const [rgpd, setRgpd] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
-  const loadTime = useRef(Date.now());
+  const loadTime = useRef(0);
+
+  useEffect(() => {
+    loadTime.current = Date.now();
+  }, []);
 
   const validate = useCallback(() => {
     const form = formRef.current;
@@ -32,7 +36,6 @@ export default function Acceso() {
 
     setErrores(errs);
     return Object.keys(errs).length === 0;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rgpd]);
 
   const handleSubmit = async (e: React.FormEvent) => {
