@@ -8,9 +8,11 @@ export default function Footer() {
       <div className="contenedor-muv">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 mb-12">
           <div>
-            <p className="font-display text-2xl font-semibold text-mineral mb-2">
-              MUV VITAL<span className="text-vital">.</span>
-            </p>
+            <img
+              src={`${import.meta.env.BASE_URL}images/logo-muv-blanco.png`}
+              alt="MÜV Vital"
+              className="h-12 w-auto mb-4"
+            />
             <p className="font-body text-sm leading-relaxed max-w-xs">
               {FOOTER.claim}
             </p>

@@ -17,8 +17,8 @@
     --card-foreground: 210 17% 8%;
     --popover: 0 0% 100%;
     --popover-foreground: 210 17% 8%;
-    --primary: 78 100% 62%;
-    --primary-foreground: 210 17% 8%;
+    --primary: 188 43% 23%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 40 23% 92%;
     --secondary-foreground: 210 17% 8%;
     --muted: 40 23% 92%;
@@ -29,7 +29,7 @@
     --destructive-foreground: 0 0% 100%;
     --border: 40 10% 80%;
     --input: 40 10% 80%;
-    --ring: 78 100% 62%;
+    --ring: 188 43% 23%;
   }
 
   html {
@@ -47,7 +47,7 @@
   }
 
   ::selection {
-    background-color: rgba(200, 255, 61, 0.3);
+    background-color: rgba(33, 76, 83, 0.25);
     color: #101417;
   }
 }
@@ -97,7 +97,7 @@
   .acento-vital {
     color: #101417;
     text-decoration: underline;
-    text-decoration-color: #C8FF3D;
+    text-decoration-color: #4FA3A5;
     text-decoration-thickness: 3px;
     text-underline-offset: 4px;
   }
@@ -159,7 +159,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #C8FF3D;
+    background-color: #4FA3A5;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);

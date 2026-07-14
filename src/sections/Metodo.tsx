@@ -88,7 +88,7 @@ export default function Metodo() {
                 const y = 100 + 80 * Math.sin(angle);
                 return (
                   <g key={i}>
-                    <circle cx={x} cy={y} r="4" fill="#C8FF3D" />
+                    <circle cx={x} cy={y} r="4" fill="#4FA3A5" />
                     <text
                       x={x}
                       y={y - 12}

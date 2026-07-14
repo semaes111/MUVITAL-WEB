@@ -20,7 +20,7 @@ function MethodRing() {
     const colors = new Float32Array(n * 3);
 
     const mineralColor = new THREE.Color("#F4F1EA");
-    const vitalColor = new THREE.Color("#C8FF3D");
+    const vitalColor = new THREE.Color("#4FA3A5");
     const clusterSize = Math.floor(n / 4);
 
     for (let i = 0; i < n; i++) {

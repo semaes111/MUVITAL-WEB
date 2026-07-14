@@ -60,7 +60,7 @@ const INJECTED_STYLES = `
 
   /* Tarjeta física profunda con iluminación por ratón */
   .premium-depth-card {
-      background: linear-gradient(145deg, #1A2025 0%, #0A0D10 100%);
+      background: linear-gradient(145deg, #214C53 0%, #0E2126 100%);
       box-shadow:
           0 40px 100px -20px rgba(0, 0, 0, 0.9),
           0 20px 40px -20px rgba(0, 0, 0, 0.8),
@@ -72,7 +72,7 @@ const INJECTED_STYLES = `
 
   .card-sheen {
       position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 50;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(200,255,61,0.06) 0%, transparent 40%);
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(79,163,165,0.10) 0%, transparent 40%);
       mix-blend-mode: screen; transition: opacity 0.3s ease;
   }
 
@@ -126,8 +126,8 @@ const INJECTED_STYLES = `
       cursor: pointer;
   }
   .btn-modern-light {
-      background: linear-gradient(180deg, #C8FF3D 0%, #9BCC22 100%);
-      color: #101417;
+      background: linear-gradient(180deg, #4FA3A5 0%, #2E6A73 100%);
+      color: #F4F1EA;
       box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.1), 0 12px 24px -4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.6), inset 0 -3px 6px rgba(0,0,0,0.06);
   }
   .btn-modern-light:hover {
@@ -398,7 +398,7 @@ export function CinematicHero({
                     <div className="absolute inset-0 screen-glare z-40 pointer-events-none" aria-hidden="true" />
 
                     <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-full z-50 flex items-center justify-end px-3 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.1)]">
-                      <div className="w-1.5 h-1.5 rounded-full bg-vital shadow-[0_0_8px_rgba(200,255,61,0.8)] animate-pulse" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-vital shadow-[0_0_8px_rgba(79,163,165,0.8)] animate-pulse" />
                     </div>
 
                     <div className="relative w-full h-full pt-12 px-5 pb-8 flex flex-col">
@@ -413,7 +413,7 @@ export function CinematicHero({
                       <div className="phone-widget relative w-44 h-44 mx-auto flex items-center justify-center mb-8 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
                         <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
                           <circle cx="88" cy="88" r="64" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="12" />
-                          <circle className="progress-ring" cx="88" cy="88" r="64" fill="none" stroke="#C8FF3D" strokeWidth="12" />
+                          <circle className="progress-ring" cx="88" cy="88" r="64" fill="none" stroke="#4FA3A5" strokeWidth="12" />
                         </svg>
                         <div className="text-center z-10 flex flex-col items-center">
                           <span className="counter-val text-4xl font-extrabold tracking-tighter text-white">0</span>
