@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Preloader from "@/components/layout/Preloader";
+import CookieBanner from "@/components/layout/CookieBanner";
 import { CinematicHero } from "@/components/cinematic/CinematicHero";
 import Manifiesto from "@/sections/Manifiesto";
 import Metodo from "@/sections/Metodo";
@@ -73,6 +74,7 @@ export default function App() {
             <Route path="/efectos" element={<Efectos />} />
           </Routes>
           <Footer />
+          <CookieBanner />
         </>
       )}
     </>
