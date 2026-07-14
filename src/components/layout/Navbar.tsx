@@ -44,9 +44,14 @@ export default function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="font-display text-lg lg:text-xl font-semibold text-mineral tracking-tight"
+            className="flex items-center"
+            aria-label="MÜV Vital — inicio"
           >
-            MUV VITAL<span className="text-vital">.</span>
+            <img
+              src={`${import.meta.env.BASE_URL}images/logo-muv-blanco.png`}
+              alt="MÜV Vital"
+              className="h-9 lg:h-11 w-auto"
+            />
           </a>
 
           <div className="hidden lg:flex items-center gap-8">

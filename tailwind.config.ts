@@ -16,9 +16,17 @@ export default {
           DEFAULT: "#F4F1EA",
           dark: "#E9E4D8",
         },
+        // Acento de marca (familia teal)
         vital: {
-          DEFAULT: "#C8FF3D",
-          dark: "#9BCC22",
+          DEFAULT: "#4FA3A5",
+          dark: "#2E6A73",
+        },
+        // Color oficial de marca MÜV (petróleo/teal)
+        petroleo: {
+          DEFAULT: "#214C53",
+          dark: "#17383E",
+          claro: "#4FA3A5",
+          suave: "#E7EEEE",
         },
         metal: {
           DEFAULT: "#D9B978",

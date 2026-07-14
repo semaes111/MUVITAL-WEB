@@ -1,4 +1,4 @@
-import{b as m,d as y,j as p}from"./index-DC8Y0-I4.js";import{p as w,S as g,q as z,f as M,j,M as R,W as C}from"./three.module-Dg0KGVSB.js";function b(){const c=m.useRef(null),l=y();return m.useEffect(()=>{const t=c.current;if(!t)return;const n=new w;n.position.z=1;const r=new g,d=new z(2,2),i={time:{value:1},resolution:{value:new j}},h=`
+import{b as m,d as y,j as p}from"./index-sCXSjyQJ.js";import{p as w,S as g,q as z,f as M,j,M as R,W as C}from"./three.module-Dg0KGVSB.js";function b(){const c=m.useRef(null),l=y();return m.useEffect(()=>{const t=c.current;if(!t)return;const n=new w;n.position.z=1;const r=new g,d=new z(2,2),i={time:{value:1},resolution:{value:new j}},h=`
       void main() {
         gl_Position = vec4( position, 1.0 );
       }
