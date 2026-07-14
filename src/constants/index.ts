@@ -391,6 +391,8 @@ export const FOOTER = {
   claim: "MUV Vital — Club privado de salud y rendimiento. Roquetas de Mar, Almería.",
   avisoSanitario:
     "Los servicios sanitarios de MUV Vital (medicina, fisioterapia, nutrición y podología) se prestan por profesionales colegiados. «PENDIENTE:nº-registro-sanitario-centro»",
+  avisoIA:
+    "Esta página web ha sido editada, incluyendo parte de su contenido e imágenes, con ayuda de inteligencia artificial.",
   linksLegales: [
     { titulo: "Aviso legal", href: "/legal/aviso-legal" },
     { titulo: "Privacidad", href: "/legal/privacidad" },

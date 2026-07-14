@@ -28,6 +28,7 @@ function HomePage() {
   return (
     <main>
       <CinematicHero
+        bgImage={`${import.meta.env.BASE_URL}images/soporte-frontal.webp`}
         onPrimary={() => scrollToId("acceso")}
         onSecondary={() => scrollToId("metodo")}
       />
@@ -37,6 +38,16 @@ function HomePage() {
       <Unidades />
       <Espacio />
       <Equipo />
+      {/* Segunda estructura cinematográfica idéntica, con otra foto de fondo */}
+      <CinematicHero
+        bgImage={`${import.meta.env.BASE_URL}images/soporte-posterior.webp`}
+        tagline1="Fuerza"
+        tagline2="con seguimiento clínico."
+        cardHeading="Tu progreso, medido."
+        ctaHeading="Únete al club."
+        onPrimary={() => scrollToId("acceso")}
+        onSecondary={() => scrollToId("metodo")}
+      />
       <GaleriaMarquee />
       <Prueba />
       <Acceso />

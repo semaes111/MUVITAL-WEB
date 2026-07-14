@@ -59,6 +59,10 @@ export default function Footer() {
             &copy; {year} {MARCA.nombre}
           </p>
         </div>
+
+        <p className="font-body text-xs text-mineral/30 mt-6">
+          {FOOTER.avisoIA}
+        </p>
       </div>
     </footer>
   );

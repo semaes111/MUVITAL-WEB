@@ -171,6 +171,7 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
   ctaSecondaryHref?: string;
   onPrimary?: () => void;
   onSecondary?: () => void;
+  bgImage?: string;
 }
 
 export function CinematicHero({
@@ -195,6 +196,7 @@ export function CinematicHero({
   ctaSecondaryHref = "#/",
   onPrimary,
   onSecondary,
+  bgImage,
   className,
   ...props
 }: CinematicHeroProps) {
@@ -356,6 +358,19 @@ export function CinematicHero({
           ref={mainCardRef}
           className="main-card premium-depth-card relative overflow-hidden gsap-reveal flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
         >
+          {/* Foto de fondo de la base (opcional) */}
+          {bgImage && (
+            <>
+              <img
+                src={bgImage}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 z-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 z-0 bg-grafito/75" />
+            </>
+          )}
+
           <div className="card-sheen" aria-hidden="true" />
 
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
@@ -370,14 +385,6 @@ export function CinematicHero({
             {/* Maqueta */}
             <div className="mockup-scroll-wrapper order-2 lg:order-2 relative w-full h-[380px] lg:h-[600px] flex items-center justify-center z-10" style={{ perspective: "1000px" }}>
               <div className="relative w-full h-full flex items-center justify-center transform scale-[0.65] md:scale-90 lg:scale-100">
-                {/* Lámina de soporte posterior (detrás del móvil) */}
-                <img
-                  src={`${import.meta.env.BASE_URL}images/soporte-posterior.webp`}
-                  alt=""
-                  aria-hidden="true"
-                  className="floating-badge absolute z-0 hidden sm:block w-44 lg:w-60 aspect-[4/5] object-cover rounded-2xl border border-white/10 shadow-2xl -rotate-6 -top-6 right-2 lg:right-[-56px] opacity-80"
-                />
-
                 <div
                   ref={mockupRef}
                   className="relative z-10 w-[280px] h-[580px] rounded-[3rem] iphone-bezel flex flex-col will-change-transform transform-style-3d"
@@ -443,14 +450,6 @@ export function CinematicHero({
                     </div>
                   </div>
                 </div>
-
-                {/* Lámina de soporte frontal (delante y bajo el móvil) */}
-                <img
-                  src={`${import.meta.env.BASE_URL}images/soporte-frontal.webp`}
-                  alt=""
-                  aria-hidden="true"
-                  className="floating-badge absolute z-20 hidden sm:block w-48 lg:w-64 aspect-[4/5] object-cover rounded-2xl border border-white/15 shadow-2xl rotate-6 -bottom-8 left-2 lg:left-[-56px]"
-                />
 
                 {/* Badges flotantes */}
                 <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">

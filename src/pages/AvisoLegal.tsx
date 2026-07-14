@@ -45,9 +45,19 @@ export default function AvisoLegal() {
           <section className="mb-10">
             <h2 className="font-display text-xl text-grafito mb-4">4. Ley aplicable</h2>
             <p className="font-body text-sm text-grafito/70 leading-relaxed">
-              Este aviso legal se rige por la legislación española. Para cualquier 
-              controversia que pudiera surgir, las partes se someten a los juzgados 
+              Este aviso legal se rige por la legislación española. Para cualquier
+              controversia que pudiera surgir, las partes se someten a los juzgados
               y tribunales de Almería.
+            </p>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="font-display text-xl text-grafito mb-4">5. Uso de inteligencia artificial</h2>
+            <p className="font-body text-sm text-grafito/70 leading-relaxed">
+              Esta página web ha sido editada, incluyendo parte de su contenido y de
+              sus imágenes, con ayuda de herramientas de inteligencia artificial. Los
+              datos identificativos y sanitarios del club son reales; algunos textos e
+              imágenes ilustrativas pueden haber sido generados o retocados con IA.
             </p>
           </section>
         </div>
