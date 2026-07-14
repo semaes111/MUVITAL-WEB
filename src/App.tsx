@@ -3,13 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Preloader from "@/components/layout/Preloader";
-import Hero from "@/sections/Hero";
+import { CinematicHero } from "@/components/cinematic/CinematicHero";
 import Manifiesto from "@/sections/Manifiesto";
 import Metodo from "@/sections/Metodo";
 import Pilares from "@/sections/Pilares";
 import Unidades from "@/sections/Unidades";
 import Espacio from "@/sections/Espacio";
 import Equipo from "@/sections/Equipo";
+import GaleriaMarquee from "@/sections/GaleriaMarquee";
 import Prueba from "@/sections/Prueba";
 import Acceso from "@/sections/Acceso";
 import AvisoLegal from "@/pages/AvisoLegal";
@@ -19,15 +20,24 @@ import Experiencia from "@/pages/Experiencia";
 import Efectos from "@/pages/Efectos";
 
 function HomePage() {
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main>
-      <Hero />
+      <CinematicHero
+        onPrimary={() => scrollToId("acceso")}
+        onSecondary={() => scrollToId("metodo")}
+      />
       <Manifiesto />
       <Metodo />
       <Pilares />
       <Unidades />
       <Espacio />
       <Equipo />
+      <GaleriaMarquee />
       <Prueba />
       <Acceso />
     </main>

@@ -169,6 +169,8 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
   ctaPrimaryHref?: string;
   ctaSecondaryLabel?: string;
   ctaSecondaryHref?: string;
+  onPrimary?: () => void;
+  onSecondary?: () => void;
 }
 
 export function CinematicHero({
@@ -191,6 +193,8 @@ export function CinematicHero({
   ctaPrimaryHref = "#/",
   ctaSecondaryLabel = "Conocer el método",
   ctaSecondaryHref = "#/",
+  onPrimary,
+  onSecondary,
   className,
   ...props
 }: CinematicHeroProps) {
@@ -323,13 +327,26 @@ export function CinematicHero({
           {ctaDescription}
         </p>
         <div className="flex flex-col sm:flex-row gap-6">
-          <a href={ctaPrimaryHref} className="btn-modern-light flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
-            {ctaPrimaryLabel}
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href={ctaSecondaryHref} className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
-            {ctaSecondaryLabel}
-          </a>
+          {onPrimary ? (
+            <button type="button" onClick={onPrimary} className="btn-modern-light flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
+              {ctaPrimaryLabel}
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          ) : (
+            <a href={ctaPrimaryHref} className="btn-modern-light flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
+              {ctaPrimaryLabel}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
+          {onSecondary ? (
+            <button type="button" onClick={onSecondary} className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
+              {ctaSecondaryLabel}
+            </button>
+          ) : (
+            <a href={ctaSecondaryHref} className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] font-general font-semibold tracking-wide">
+              {ctaSecondaryLabel}
+            </a>
+          )}
         </div>
       </div>
 

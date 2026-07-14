@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { PILARES } from "@/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
+
+const ShaderAnimation = lazy(() => import("@/components/canvas/ShaderAnimation"));
 
 export default function Pilares() {
   const cardsRef = useRef<HTMLDivElement>(null);
@@ -23,8 +25,15 @@ export default function Pilares() {
   };
 
   return (
-    <section id="pilares" className="bg-grafito py-32 lg:py-40">
-      <div className="contenedor-muv">
+    <section id="pilares" className="bg-grafito py-32 lg:py-40 relative overflow-hidden">
+      {/* Shader animado de fondo (blend screen, sutil) */}
+      <Suspense fallback={null}>
+        <div className="absolute inset-0 z-0 mix-blend-screen opacity-40 pointer-events-none">
+          <ShaderAnimation />
+        </div>
+      </Suspense>
+
+      <div className="contenedor-muv relative z-10">
         <SectionHeader eyebrow="LOS PILARES" titulo="Cuatro formas de cuidarte." oscuro />
 
         <div ref={cardsRef} className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-5">
