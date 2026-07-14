@@ -54,12 +54,13 @@ export default function Espacio() {
             transition={{ duration: 0.6, delay: i * 0.1 }}
           >
             <div className="aspect-[16/10] bg-mineral-dark rounded-lg overflow-hidden mb-4 relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="font-mono text-xs text-grafito/30 uppercase tracking-[0.2em]">
-                  &laquo;PENDIENTE:{img.id}&raquo;
-                </p>
-              </div>
-              <div className="absolute inset-0 bg-grafito/5 group-hover:bg-transparent transition-colors duration-400" />
+              <img
+                src={`${import.meta.env.BASE_URL}${img.img}`}
+                alt={img.titulo}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-muv group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-grafito/10 group-hover:bg-transparent transition-colors duration-400" />
             </div>
             <p className="font-mono text-xs text-metal uppercase tracking-[0.15em]">
               {img.titulo}

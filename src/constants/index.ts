@@ -9,10 +9,10 @@ export const MARCA = {
   ciudad: "Roquetas de Mar",
   provincia: "Almería",
   dominio: "https://muvvital.com",
-  telefono: "«PENDIENTE:teléfono»",
-  whatsapp: "«PENDIENTE:whatsapp»",
+  telefono: "680 63 10 98",
+  whatsapp: "680 63 10 98",
   email: "«PENDIENTE:email-contacto»",
-  direccion: "«PENDIENTE:dirección-del-club»",
+  direccion: "Avenida Reino de España, 78, 04740",
   horario: "«PENDIENTE:horario»",
 } as const;
 
@@ -230,11 +230,11 @@ export const UNIDADES: Unidad[] = [
 // ───────────────────────────────────────────────────────────────
 
 export const ESPACIO_IMAGENES = [
-  { id: "sala-fuerza", titulo: "Sala de fuerza", pendiente: true },
-  { id: "consulta-clinica", titulo: "Consulta clínica", pendiente: true },
-  { id: "zona-evaluacion", titulo: "Zona de evaluación", pendiente: true },
-  { id: "entrenamiento-personal", titulo: "Entrenamiento personal", pendiente: true },
-  { id: "recepcion", titulo: "Recepción", pendiente: true },
+  { id: "sala-fuerza", titulo: "Sala de fuerza", img: "images/fuerza.webp" },
+  { id: "recuperacion", titulo: "Recuperación y fisioterapia", img: "images/recuperacion.webp" },
+  { id: "zona-evaluacion", titulo: "Zona de evaluación y rendimiento", img: "images/evaluacion.webp" },
+  { id: "entrenamiento-personal", titulo: "Entrenamiento personal", img: "images/entrenamiento.webp" },
+  { id: "instalaciones", titulo: "Instalaciones", img: "images/instalaciones.webp" },
 ] as const;
 
 // ───────────────────────────────────────────────────────────────
@@ -380,7 +380,7 @@ export const FORMULARIO = {
   boton: "Enviar solicitud",
   enviando: "Enviando…",
   exito: "Recibido. Te llamamos en menos de 24 h laborables para proponerte fecha y hora.",
-  error: "No se ha podido enviar. Llámanos o escríbenos por WhatsApp: «PENDIENTE:teléfono».",
+  error: "No se ha podido enviar. Llámanos o escríbenos por WhatsApp: 680 63 10 98.",
 } as const;
 
 // ───────────────────────────────────────────────────────────────
@@ -391,6 +391,8 @@ export const FOOTER = {
   claim: "MUV Vital — Club privado de salud y rendimiento. Roquetas de Mar, Almería.",
   avisoSanitario:
     "Los servicios sanitarios de MUV Vital (medicina, fisioterapia, nutrición y podología) se prestan por profesionales colegiados. «PENDIENTE:nº-registro-sanitario-centro»",
+  avisoIA:
+    "Esta página web ha sido editada, incluyendo parte de su contenido e imágenes, con ayuda de inteligencia artificial.",
   linksLegales: [
     { titulo: "Aviso legal", href: "/legal/aviso-legal" },
     { titulo: "Privacidad", href: "/legal/privacidad" },
@@ -405,13 +407,8 @@ export const FOOTER = {
 export const SHOW_TESTIMONIOS = false;
 
 export const DATOS_PENDIENTES: string[] = [
-  "dirección-del-club",
-  "teléfono",
-  "whatsapp",
   "email-contacto",
   "horario",
-  "razón-social",
-  "nif",
   "nº-registro-sanitario-centro",
   "endpoint-o-email-destino",
   "foto-hero",
