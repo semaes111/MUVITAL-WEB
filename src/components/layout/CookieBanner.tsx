@@ -8,16 +8,21 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (!saved) {
         // Pequeño retardo para que aparezca tras cargar la web
-        const t = setTimeout(() => setVisible(true), 800);
-        return () => clearTimeout(t);
+        timer = setTimeout(() => setVisible(true), 800);
       }
     } catch {
-      setVisible(true);
+      timer = setTimeout(() => setVisible(true), 0);
     }
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   const decide = (value: "aceptadas" | "rechazadas") => {

@@ -19,5 +19,10 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Los componentes de UI comparten variantes y helpers con sus consumidores.
+      // Es un patrón deliberado y compatible con el build de producción.
+      'react-refresh/only-export-components': 'off',
+    },
   },
 ])

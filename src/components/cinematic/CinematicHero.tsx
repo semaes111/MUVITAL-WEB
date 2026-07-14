@@ -172,6 +172,8 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
   onPrimary?: () => void;
   onSecondary?: () => void;
   bgImage?: string;
+  imageLoading?: "eager" | "lazy";
+  imageFetchPriority?: "high" | "low" | "auto";
 }
 
 export function CinematicHero({
@@ -197,6 +199,8 @@ export function CinematicHero({
   onPrimary,
   onSecondary,
   bgImage,
+  imageLoading = "lazy",
+  imageFetchPriority = "auto",
   className,
   ...props
 }: CinematicHeroProps) {
@@ -204,11 +208,27 @@ export function CinematicHero({
   const mainCardRef = useRef<HTMLDivElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
   const requestRef = useRef<number>(0);
+  const isVisibleRef = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { rootMargin: "100px 0px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   // 1. Interacción con el ratón (requestAnimationFrame)
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.scrollY > window.innerHeight * 2) return;
+      if (!isVisibleRef.current) return;
       cancelAnimationFrame(requestRef.current);
       requestRef.current = requestAnimationFrame(() => {
         if (mainCardRef.current && mockupRef.current) {
@@ -365,6 +385,9 @@ export function CinematicHero({
                 src={bgImage}
                 alt=""
                 aria-hidden="true"
+                loading={imageLoading}
+                fetchPriority={imageFetchPriority}
+                decoding="async"
                 className="absolute inset-0 z-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 z-0 bg-grafito/75" />
