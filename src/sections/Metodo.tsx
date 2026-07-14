@@ -74,7 +74,6 @@ export default function Metodo() {
   return (
     <section
       ref={sectionRef}
-      id="metodo"
       className="bg-grafito py-32 lg:py-40 relative overflow-hidden"
     >
       <div className="contenedor-muv relative z-10">
@@ -107,7 +106,7 @@ export default function Metodo() {
                 const y = 100 + 80 * Math.sin(angle);
                 return (
                   <g key={i}>
-                    <circle cx={x} cy={y} r="4" fill="#4FA3A5" />
+                    <circle cx={x} cy={y} r="4" fill="#2E888D" />
                     <text
                       x={x}
                       y={y - 12}

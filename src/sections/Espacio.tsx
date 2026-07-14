@@ -4,14 +4,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ESPACIO_IMAGENES, MARCA } from "@/constants";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useMobile } from "@/hooks/useMobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Espacio() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMobile(1024);
 
   useEffect(() => {
+    if (isMobile) return;
     const section = sectionRef.current;
     const track = trackRef.current;
     if (!section || !track) return;
@@ -35,19 +38,19 @@ export default function Espacio() {
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [isMobile]);
 
   return (
-    <section ref={sectionRef} id="espacio" className="bg-mineral relative overflow-hidden">
+    <section ref={sectionRef} className="bg-mineral relative overflow-hidden">
       <div className="pt-32 lg:pt-40 pb-12 contenedor-muv">
         <SectionHeader eyebrow="EL ESPACIO" titulo="Arquitectura para el rendimiento." />
       </div>
 
-      <div ref={trackRef} className="flex gap-6 pl-8 lg:pl-16 pb-32 lg:pb-40">
+      <div ref={trackRef} className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-24 overscroll-x-contain lg:snap-none lg:overflow-visible lg:pl-16 lg:pr-0 lg:pb-40">
         {ESPACIO_IMAGENES.map((img, i) => (
           <motion.div
             key={img.id}
-            className="flex-shrink-0 w-[80vw] lg:w-[50vw] group"
+            className="group w-[80vw] flex-shrink-0 snap-center lg:w-[50vw] lg:snap-align-none"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -56,8 +59,13 @@ export default function Espacio() {
             <div className="aspect-[16/10] bg-mineral-dark rounded-lg overflow-hidden mb-4 relative">
               <img
                 src={`${import.meta.env.BASE_URL}${img.img}`}
+                srcSet={`${import.meta.env.BASE_URL}${img.img.replace(/\.webp$/, "-mobile.webp")} 959w, ${import.meta.env.BASE_URL}${img.img} 1672w`}
                 alt={img.titulo}
+                width={1672}
+                height={941}
                 loading="lazy"
+                decoding="async"
+                sizes="(min-width: 1024px) 50vw, 80vw"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-muv group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-grafito/10 group-hover:bg-transparent transition-colors duration-400" />

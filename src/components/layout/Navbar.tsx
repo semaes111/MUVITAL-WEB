@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, HERO } from "@/constants";
 import Button from "@/components/ui/Button";
@@ -7,18 +7,31 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [lastY, setLastY] = useState(0);
+  const lastYRef = useRef(0);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      setAtTop(y < 50);
-      setHidden(y > lastY && y > 100);
-      setLastY(y);
+      if (frameRef.current !== null) return;
+
+      frameRef.current = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const nextAtTop = y < 50;
+        const nextHidden = y > lastYRef.current && y > 100;
+
+        setAtTop((current) => current === nextAtTop ? current : nextAtTop);
+        setHidden((current) => current === nextHidden ? current : nextHidden);
+        lastYRef.current = y;
+        frameRef.current = null;
+      });
     };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    };
+  }, []);
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
@@ -50,6 +63,9 @@ export default function Navbar() {
             <img
               src={`${import.meta.env.BASE_URL}images/logo-muv-blanco.png`}
               alt="MÜV Vital"
+              width={553}
+              height={306}
+              decoding="async"
               className="h-9 lg:h-11 w-auto"
             />
           </a>

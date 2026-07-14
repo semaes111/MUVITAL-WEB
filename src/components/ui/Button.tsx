@@ -8,7 +8,7 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-vital text-grafito px-6 py-3 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(16,20,23,0.18)] active:scale-[0.98]",
+        default: "bg-vital text-white px-6 py-3 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(33,76,83,0.22)] active:scale-[0.98]",
         destructive: "bg-red-500 text-white px-6 py-3",
         outline: "border border-mineral/20 bg-transparent text-mineral px-6 py-3 hover:bg-mineral/5",
         secondary: "bg-grafito-700 text-mineral px-6 py-3",
@@ -55,7 +55,7 @@ const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
   ({ className, variant = "primary-dark", size, href, children, ...props }, ref) => {
     // Mapear variantes personalizadas a clases
     const customVariants: Record<string, string> = {
-      "primary-dark": "bg-vital text-grafito px-6 py-3 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(16,20,23,0.18)] active:scale-[0.98]",
+      "primary-dark": "bg-vital text-white px-6 py-3 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(33,76,83,0.22)] active:scale-[0.98]",
       "primary-light": "bg-grafito text-mineral px-6 py-3 relative overflow-hidden group hover:-translate-y-0.5 active:scale-[0.98]",
       ghost: "text-mineral underline underline-offset-4 decoration-transparent hover:decoration-vital transition-all duration-250",
     };

@@ -4,7 +4,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Equipo() {
   return (
-    <section id="equipo" className="bg-mineral py-32 lg:py-40">
+    <section className="bg-mineral py-32 lg:py-40">
       <div className="contenedor-muv">
         <SectionHeader eyebrow="EL EQUIPO" titulo={EQUIPO_FRASE} />
 

@@ -47,7 +47,7 @@ export default function Pilares() {
   };
 
   return (
-    <section ref={sectionRef} id="pilares" className="bg-grafito py-32 lg:py-40 relative overflow-hidden">
+    <section ref={sectionRef} className="bg-grafito py-32 lg:py-40 relative overflow-hidden">
       {/* Shader animado de fondo (blend screen, sutil) */}
       {shaderVisible && (
         <Suspense fallback={null}>

@@ -11,6 +11,10 @@ export default function Footer() {
             <img
               src={`${import.meta.env.BASE_URL}images/logo-muv-blanco.png`}
               alt="MÜV Vital"
+              width={553}
+              height={306}
+              loading="lazy"
+              decoding="async"
               className="h-12 w-auto mb-4"
             />
             <p className="font-body text-sm leading-relaxed max-w-xs">

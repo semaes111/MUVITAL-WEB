@@ -22,29 +22,29 @@ const INJECTED_STYLES = `
   .bg-grid-theme {
       background-size: 60px 60px;
       background-image:
-          linear-gradient(to right, rgba(244,241,234,0.05) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(244,241,234,0.05) 1px, transparent 1px);
+          linear-gradient(to right, rgba(217,212,200,0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(217,212,200,0.06) 1px, transparent 1px);
       mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
   }
 
   /* Tipografía con profundidad */
   .text-3d-matte {
-      color: #F4F1EA;
+      color: #D9D4C8;
       text-shadow:
-          0 10px 30px rgba(244,241,234,0.20),
-          0 2px 4px rgba(244,241,234,0.10);
+          0 10px 30px rgba(217,212,200,0.20),
+          0 2px 4px rgba(217,212,200,0.10);
   }
 
   .text-silver-matte {
-      background: linear-gradient(180deg, #F4F1EA 0%, rgba(244,241,234,0.40) 100%);
+      background: linear-gradient(180deg, #D9D4C8 0%, rgba(217,212,200,0.40) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       transform: translateZ(0);
       filter:
-          drop-shadow(0px 10px 20px rgba(244,241,234,0.15))
-          drop-shadow(0px 2px 4px rgba(244,241,234,0.10));
+          drop-shadow(0px 10px 20px rgba(217,212,200,0.15))
+          drop-shadow(0px 2px 4px rgba(217,212,200,0.10));
   }
 
   .text-card-silver-matte {
@@ -60,7 +60,7 @@ const INJECTED_STYLES = `
 
   /* Tarjeta física profunda con iluminación por ratón */
   .premium-depth-card {
-      background: linear-gradient(145deg, #214C53 0%, #0E2126 100%);
+      background: linear-gradient(145deg, #214C53 0%, #183A40 100%);
       box-shadow:
           0 40px 100px -20px rgba(0, 0, 0, 0.9),
           0 20px 40px -20px rgba(0, 0, 0, 0.8),
@@ -72,7 +72,7 @@ const INJECTED_STYLES = `
 
   .card-sheen {
       position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 50;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(79,163,165,0.10) 0%, transparent 40%);
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(46,136,141,0.12) 0%, transparent 40%);
       mix-blend-mode: screen; transition: opacity 0.3s ease;
   }
 
@@ -126,8 +126,8 @@ const INJECTED_STYLES = `
       cursor: pointer;
   }
   .btn-modern-light {
-      background: linear-gradient(180deg, #4FA3A5 0%, #2E6A73 100%);
-      color: #F4F1EA;
+      background: linear-gradient(180deg, #2E888D 0%, #236A6F 100%);
+      color: #FFFFFF;
       box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.1), 0 12px 24px -4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.6), inset 0 -3px 6px rgba(0,0,0,0.06);
   }
   .btn-modern-light:hover {
@@ -137,7 +137,7 @@ const INJECTED_STYLES = `
   .btn-modern-light:active { transform: translateY(1px); }
   .btn-modern-dark {
       background: linear-gradient(180deg, #27272A 0%, #18181B 100%);
-      color: #F4F1EA;
+      color: #D9D4C8;
       box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.6), 0 12px 24px -4px rgba(0,0,0,0.9), inset 0 1px 1px rgba(255,255,255,0.15), inset 0 -3px 6px rgba(0,0,0,0.8);
   }
   .btn-modern-dark:hover {
@@ -177,7 +177,7 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export function CinematicHero({
-  brandName = "MUV VITAL",
+  brandName = "MÜV Vital",
   tagline1 = "Movimiento",
   tagline2 = "con criterio médico.",
   cardHeading = "Un método. Un solo lugar.",
@@ -385,9 +385,12 @@ export function CinematicHero({
                 src={bgImage}
                 alt=""
                 aria-hidden="true"
+                width={1672}
+                height={941}
                 loading={imageLoading}
                 fetchPriority={imageFetchPriority}
                 decoding="async"
+                sizes="100vw"
                 className="absolute inset-0 z-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 z-0 bg-grafito/75" />
@@ -400,9 +403,14 @@ export function CinematicHero({
 
             {/* Marca */}
             <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="font-display text-5xl md:text-[5rem] lg:text-[6.5rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
-                {brandName}
-              </h2>
+              <img
+                src={`${import.meta.env.BASE_URL}images/logo-muv-blanco.png`}
+                alt={brandName}
+                width={553}
+                height={306}
+                decoding="async"
+                className="h-auto w-40 object-contain md:w-56 lg:w-72"
+              />
             </div>
 
             {/* Maqueta */}
@@ -421,7 +429,7 @@ export function CinematicHero({
                     <div className="absolute inset-0 screen-glare z-40 pointer-events-none" aria-hidden="true" />
 
                     <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-full z-50 flex items-center justify-end px-3 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.1)]">
-                      <div className="w-1.5 h-1.5 rounded-full bg-vital shadow-[0_0_8px_rgba(79,163,165,0.8)] animate-pulse" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-vital shadow-[0_0_8px_rgba(46,136,141,0.8)] animate-pulse" />
                     </div>
 
                     <div className="relative w-full h-full pt-12 px-5 pb-8 flex flex-col">
@@ -436,7 +444,7 @@ export function CinematicHero({
                       <div className="phone-widget relative w-44 h-44 mx-auto flex items-center justify-center mb-8 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
                         <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
                           <circle cx="88" cy="88" r="64" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="12" />
-                          <circle className="progress-ring" cx="88" cy="88" r="64" fill="none" stroke="#4FA3A5" strokeWidth="12" />
+                          <circle className="progress-ring" cx="88" cy="88" r="64" fill="none" stroke="#2E888D" strokeWidth="12" />
                         </svg>
                         <div className="text-center z-10 flex flex-col items-center">
                           <span className="counter-val text-4xl font-extrabold tracking-tighter text-white">0</span>

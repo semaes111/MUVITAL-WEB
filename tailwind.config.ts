@@ -8,32 +8,36 @@ export default {
     extend: {
       colors: {
         grafito: {
-          DEFAULT: "#101417",
-          800: "#1A2025",
-          700: "#242B31",
+          DEFAULT: "#214C53",
+          800: "#183A40",
+          700: "#2E6A73",
         },
         mineral: {
-          DEFAULT: "#F4F1EA",
-          dark: "#E9E4D8",
+          DEFAULT: "#D9D4C8",
+          dark: "#C9C3B4",
         },
-        // Acento de marca (familia teal)
         vital: {
-          DEFAULT: "#4FA3A5",
-          dark: "#2E6A73",
+          DEFAULT: "#2E888D",
+          dark: "#236A6F",
         },
-        // Color oficial de marca MÜV (petróleo/teal)
         petroleo: {
           DEFAULT: "#214C53",
-          dark: "#17383E",
-          claro: "#4FA3A5",
-          suave: "#E7EEEE",
+          dark: "#183A40",
+          claro: "#2E888D",
+          suave: "#ABD2CF",
         },
         metal: {
-          DEFAULT: "#D9B978",
+          DEFAULT: "#C3A43C",
         },
         clinico: {
-          DEFAULT: "#9FC7D4",
-          dark: "#5E8FA0",
+          DEFAULT: "#ABD2CF",
+          dark: "#6DAFAA",
+        },
+        niebla: {
+          DEFAULT: "#9EA9B0",
+        },
+        energia: {
+          DEFAULT: "#E87722",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -70,10 +74,10 @@ export default {
         },
       },
       fontFamily: {
-        display: ["Fraunces", "serif"],
-        general: ["General Sans", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        display: ["Playfair Display Variable", "Playfair Display", "serif"],
+        general: ["JUST Sans", "Source Sans 3 Variable", "Source Sans 3", "sans-serif"],
+        body: ["Source Sans 3 Variable", "Source Sans 3", "sans-serif"],
+        mono: ["Source Sans 3 Variable", "Source Sans 3", "sans-serif"],
       },
       maxWidth: {
         contenido: "1280px",

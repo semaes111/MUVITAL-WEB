@@ -21,6 +21,8 @@ const pilarColors: Record<string, string> = {
   nutre: "text-metal bg-metal/20",
 };
 
+const mobileImage = (src: string) => src.replace(/\.webp$/, "-mobile.webp");
+
 export default function Unidades() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -28,7 +30,7 @@ export default function Unidades() {
   };
 
   return (
-    <section id="unidades" className="bg-mineral py-32 lg:py-40">
+    <section className="bg-mineral py-32 lg:py-40">
       <div className="contenedor-muv">
         <SectionHeader eyebrow="LAS UNIDADES" titulo="Cinco especialidades. Un solo método." />
 
@@ -45,8 +47,13 @@ export default function Unidades() {
                 <div className="relative h-[55%] w-full overflow-hidden">
                   <img
                     src={unidadFoto[unidad.id]}
+                    srcSet={`${mobileImage(unidadFoto[unidad.id])} 959w, ${unidadFoto[unidad.id]} 1672w`}
                     alt={unidad.nombre}
+                    width={1672}
+                    height={941}
                     loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 1024px) 360px, 90vw"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />

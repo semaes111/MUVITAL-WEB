@@ -35,8 +35,13 @@ export default function GaleriaMarquee() {
             >
               <img
                 src={`${B}${src}`}
+                srcSet={`${B}${src.replace(/\.webp$/, "-mobile.webp")} 959w, ${B}${src} 1672w`}
                 alt="MUV Vital"
+                width={1672}
+                height={941}
                 loading="lazy"
+                decoding="async"
+                sizes="(min-width: 768px) 284px, 213px"
                 className="h-full w-full rounded-2xl object-cover shadow-lg"
               />
             </div>
