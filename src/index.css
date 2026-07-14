@@ -11,25 +11,25 @@
     --text-body: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
     --text-label: 0.8125rem;
 
-    --background: 0 0% 100%;
-    --foreground: 210 17% 8%;
-    --card: 0 0% 100%;
-    --card-foreground: 210 17% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 210 17% 8%;
-    --primary: 188 43% 23%;
+    --background: 40 18% 82%;
+    --foreground: 188 43% 23%;
+    --card: 40 18% 82%;
+    --card-foreground: 188 43% 23%;
+    --popover: 40 18% 82%;
+    --popover-foreground: 188 43% 23%;
+    --primary: 183 39% 37%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 40 23% 92%;
-    --secondary-foreground: 210 17% 8%;
-    --muted: 40 23% 92%;
-    --muted-foreground: 210 8% 40%;
-    --accent: 40 23% 92%;
-    --accent-foreground: 210 17% 8%;
+    --secondary: 40 18% 78%;
+    --secondary-foreground: 188 43% 23%;
+    --muted: 40 18% 78%;
+    --muted-foreground: 188 15% 38%;
+    --accent: 176 30% 75%;
+    --accent-foreground: 188 43% 23%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 40 10% 80%;
-    --input: 40 10% 80%;
-    --ring: 188 43% 23%;
+    --border: 188 15% 65%;
+    --input: 188 15% 65%;
+    --ring: 183 39% 37%;
   }
 
   html {
@@ -39,36 +39,37 @@
   }
 
   body {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Source Sans 3 Variable", "Source Sans 3", sans-serif;
     font-size: var(--text-body);
-    color: #101417;
-    background-color: #F4F1EA;
+    color: #214C53;
+    background-color: #D9D4C8;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: rgba(33, 76, 83, 0.25);
-    color: #101417;
+    background-color: rgba(46, 136, 141, 0.28);
+    color: #214C53;
   }
 }
 
 @layer components {
   .font-display {
-    font-family: "Fraunces", serif;
+    font-family: "Playfair Display Variable", "Playfair Display", serif;
     font-optical-sizing: auto;
   }
 
   .font-general {
-    font-family: "General Sans", sans-serif;
+    font-family: "JUST Sans", "Source Sans 3 Variable", "Source Sans 3", sans-serif;
   }
 
   .font-body {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Source Sans 3 Variable", "Source Sans 3", sans-serif;
   }
 
   .font-mono {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Source Sans 3 Variable", "Source Sans 3", sans-serif;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
   }
 
   .text-hero {
@@ -95,32 +96,32 @@
   }
 
   .acento-vital {
-    color: #101417;
+    color: #214C53;
     text-decoration: underline;
-    text-decoration-color: #4FA3A5;
+    text-decoration-color: #2E888D;
     text-decoration-thickness: 3px;
     text-underline-offset: 4px;
   }
 
   .dato-clinico {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "Source Sans 3 Variable", "Source Sans 3", sans-serif;
     font-variant-numeric: tabular-nums;
-    color: #5E8FA0;
+    color: #6DAFAA;
   }
 
   .card-mineral {
-    background-color: #E9E4D8;
-    border: 1px solid rgba(16, 20, 23, 0.08);
+    background-color: #C9C3B4;
+    border: 1px solid rgba(33, 76, 83, 0.12);
   }
 
   .card-grafito {
-    background-color: #242B31;
-    border: 1px solid rgba(244, 241, 234, 0.06);
+    background-color: #2E6A73;
+    border: 1px solid rgba(217, 212, 200, 0.12);
   }
 
   .linea-metal {
     height: 1px;
-    background: linear-gradient(90deg, #D9B978, transparent);
+    background: linear-gradient(90deg, #C3A43C, transparent);
   }
 
   .contenedor-muv {
@@ -132,20 +133,20 @@
   }
 
   .capitulo-oscuro {
-    background-color: #101417;
-    color: #F4F1EA;
+    background-color: #214C53;
+    color: #D9D4C8;
   }
 
   .capitulo-claro {
-    background-color: #F4F1EA;
-    color: #101417;
+    background-color: #D9D4C8;
+    color: #214C53;
   }
 
   .floating-nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background-color: rgba(16, 20, 23, 0.85);
-    border-bottom: 1px solid rgba(244, 241, 234, 0.08);
+    background-color: rgba(33, 76, 83, 0.9);
+    border-bottom: 1px solid rgba(217, 212, 200, 0.12);
   }
 
   .nav-hover-btn {
@@ -159,7 +160,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #4FA3A5;
+    background-color: #2E888D;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -170,9 +171,18 @@
   }
 
   .data-grid-bg {
-    background-image: linear-gradient(rgba(159, 199, 212, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(159, 199, 212, 0.04) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(171, 210, 207, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(171, 210, 207, 0.06) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+
+  .deferred-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 760px;
+  }
+
+  .mobile-hero-content {
+    animation: mobile-hero-enter 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 
@@ -183,6 +193,31 @@
 
   .clip-inset-hidden {
     clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes mobile-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .floating-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(33, 76, 83, 0.98);
+  }
+
+  .film-grain,
+  .bg-grid-theme,
+  .card-sheen {
+    display: none;
   }
 }
 

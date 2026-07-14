@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 
 const STORAGE_KEY = "muv-cookies-consent";
 
@@ -34,17 +33,13 @@ export default function CookieBanner() {
     setVisible(false);
   };
 
+  if (!visible) return null;
+
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
+        <div
           role="dialog"
           aria-label="Aviso de cookies"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 40 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-4 left-4 right-4 z-[9999] mx-auto max-w-3xl rounded-2xl border border-mineral/10 bg-grafito-800/95 p-5 shadow-2xl backdrop-blur-md lg:bottom-6 lg:p-6"
+          className="fixed bottom-4 left-4 right-4 z-[9999] mx-auto max-w-3xl rounded-2xl border border-mineral/10 bg-grafito-800/95 p-5 shadow-2xl lg:bottom-6 lg:p-6"
         >
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
             <p className="font-body text-sm leading-relaxed text-mineral/80">
@@ -70,14 +65,12 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={() => decide("aceptadas")}
-                className="rounded-full bg-vital px-5 py-2.5 font-general text-sm font-semibold text-grafito transition-colors hover:bg-vital-dark"
+                className="rounded-full bg-vital px-5 py-2.5 font-general text-sm font-semibold text-white transition-colors hover:bg-vital-dark"
               >
                 Aceptar
               </button>
             </div>
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
   );
 }

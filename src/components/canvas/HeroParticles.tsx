@@ -82,7 +82,7 @@ function ParticlesField() {
   return (
     <points ref={pointsRef} geometry={geometry}>
       <pointsMaterial
-        color="#9FC7D4"
+        color="#ABD2CF"
         size={0.006}
         transparent
         opacity={0.2}

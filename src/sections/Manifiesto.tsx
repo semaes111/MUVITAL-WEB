@@ -1,44 +1,28 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import { MANIFIESTO } from "@/constants";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Manifiesto() {
   const sectionRef = useRef<HTMLElement>(null);
-  const phrasesRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const phrases = phrasesRef.current;
-    if (!section || !phrases) return;
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
 
-    const words = phrases.querySelectorAll(".manifiesto-word");
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 60%",
-        end: "bottom 40%",
-        toggleActions: "play none none reverse",
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setVisible(true);
+        observer.disconnect();
       },
-    });
-
-    tl.fromTo(
-      words,
-      { opacity: 0.15 },
-      {
-        opacity: 1,
-        stagger: 0.03,
-        duration: 0.4,
-        ease: "power1.out",
-      }
+      { threshold: 0.2 }
     );
 
-    return () => {
-      tl.kill();
-    };
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -47,14 +31,21 @@ export default function Manifiesto() {
       className="bg-mineral py-32 lg:py-40"
     >
       <div className="contenedor-muv">
-        <div ref={phrasesRef} className="max-w-[900px]">
+        <div className="max-w-[900px]">
           {MANIFIESTO.map((phrase, i) => (
             <p
               key={i}
               className="font-display text-title text-grafito leading-tight mb-4 last:mb-0"
             >
               {phrase.split(" ").map((word, j) => (
-                <span key={j} className="manifiesto-word inline-block mr-[0.3em]">
+                <span
+                  key={j}
+                  className="inline-block mr-[0.3em] transition-opacity duration-500 ease-muv"
+                  style={{
+                    opacity: visible ? 1 : 0.15,
+                    transitionDelay: visible ? `${(i * 8 + j) * 24}ms` : "0ms",
+                  }}
+                >
                   {word}
                 </span>
               ))}

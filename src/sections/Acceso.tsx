@@ -48,7 +48,7 @@ export default function Acceso() {
   const currentEstado = estado;
 
   return (
-    <section id="acceso" className="bg-grafito py-32 lg:py-40">
+    <section className="bg-grafito py-32 lg:py-40">
       <div className="contenedor-muv">
         <SectionHeader eyebrow={ACCESO.subtitulo} titulo={ACCESO.titulo} oscuro />
 

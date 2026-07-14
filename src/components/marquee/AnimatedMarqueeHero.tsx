@@ -114,7 +114,13 @@ export const AnimatedMarqueeHero: React.FC<AnimatedMarqueeHeroProps> = ({
             >
               <img
                 src={src}
+                srcSet={`${src.replace(/\.webp$/, "-mobile.webp")} 959w, ${src} 1672w`}
                 alt={`MUV Vital ${(index % images.length) + 1}`}
+                width={1672}
+                height={941}
+                loading="lazy"
+                decoding="async"
+                sizes="(min-width: 768px) 192px, 144px"
                 className="w-full h-full object-cover rounded-2xl shadow-md"
               />
             </div>

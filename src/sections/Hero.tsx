@@ -76,7 +76,12 @@ export default function Hero() {
       {/* Imagen de fondo */}
       <img
         src={`${import.meta.env.BASE_URL}images/entrenamiento.webp`}
+        srcSet={`${import.meta.env.BASE_URL}images/entrenamiento-mobile.webp 959w, ${import.meta.env.BASE_URL}images/entrenamiento.webp 1672w`}
         alt="Entrenamiento en MUV Vital"
+        width={1672}
+        height={941}
+        decoding="async"
+        sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover"
       />
 

@@ -40,7 +40,17 @@ export default function Efectos() {
           <div className="flex flex-wrap justify-center gap-8">
             {FOTOS.map((f) => (
               <GlareCard key={f.titulo} className="flex flex-col">
-                <img src={f.img} alt={f.titulo} className="h-2/3 w-full object-cover" />
+                <img
+                  src={f.img}
+                  srcSet={`${f.img.replace(/\.webp$/, "-mobile.webp")} 959w, ${f.img} 1672w`}
+                  alt={f.titulo}
+                  width={1672}
+                  height={941}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 768px) 360px, 90vw"
+                  className="h-2/3 w-full object-cover"
+                />
                 <div className="flex flex-1 flex-col justify-center p-6">
                   <h3 className="font-display text-xl text-mineral mb-1">{f.titulo}</h3>
                   <p className="font-body text-sm text-mineral/60 leading-snug">{f.claim}</p>
